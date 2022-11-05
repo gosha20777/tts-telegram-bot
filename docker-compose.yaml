@@ -1,0 +1,15 @@
+version: '3.5'
+services:
+  bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bot
+    env_file:
+      - env.env
+    volumes:
+      - type: bind
+        source: ./storage
+        target: /opt/app/storage
+        read_only: false
+    command: python3 bot.py
